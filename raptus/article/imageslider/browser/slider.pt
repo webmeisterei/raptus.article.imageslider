@@ -1,0 +1,39 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+     xmlns:metal="http://xml.zope.org/namespaces/metal"
+     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+     i18n:domain="raptus.article"
+     tal:condition="view/images"
+     tal:omit-tag="">
+
+    <div class="visualNoPrint scrollable"
+         tal:define="anonymous context/@@plone_portal_state/anonymous">
+
+        <ul tal:attributes="class string:items manageableList ${view/css_class}">
+            <li tal:repeat="item view/images"
+                tal:attributes="class string:${item/class}">
+                <metal:manage use-macro="context/raptus_article_macros/macros/manage" />
+
+                <img width="950" height="480"
+                     tal:attributes="src item/img_url;
+                                     alt item/caption" />
+
+                <div class="caption"
+                      tal:condition="item/description">
+                    <span tal:content="structure python:item.get('description').replace('\n', '<br />')" />
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <tal:js tal:replace='structure string:&lt;script type="text/javascript" &gt;' />
+    $(function() {
+        var circular = $('.scrollable .items li').length > 1;
+        $('.scrollable').scrollable({
+            circular: circular,
+            speed: <tal:value replace="view/fade_time" />
+        }).autoscroll(<tal:value replace="view/halt_time" />);
+    });
+    <tal:js tal:replace='structure string:&lt;/script&gt;' />
+
+</div>

@@ -1,0 +1,40 @@
+/* <dtml-with base_properties> (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+/* <dtml-call "REQUEST.set('left_width', portal_properties.raptus_article.images_galleryleft_width)"> (not this either :) */
+
+
+
+.scrollable {
+    position: relative;
+    overflow: hidden;
+    width: 950px;
+    height: 480px;
+}
+.scrollable .items {
+    width: 20000em;
+    position: absolute;
+    clear: both;
+}
+.scrollable .items li {
+    position: relative;
+    display: block;
+    float: left;
+}
+.scrollable .items li .caption {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.scrollable .items li .caption span {
+    display: block;
+    padding: 0.5em 0.5em 0.5em 110px;
+    font-size: 2em;
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+}
+
+
+
+/* </dtml-with> */
