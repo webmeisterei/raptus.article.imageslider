@@ -14,12 +14,12 @@
                 tal:attributes="class string:${item/class}">
                 <metal:manage use-macro="context/raptus_article_macros/macros/manage" />
 
-                <img width="950" height="480"
-                     tal:attributes="src item/img_url;
-                                     alt item/caption" />
+                <span class="img"><img tal:attributes="src item/img_url;
+                                           alt item/caption;
+                                           width view/width;" /></span>
 
                 <div class="caption"
-                      tal:condition="item/description">
+                      tal:condition="python:view.showCaption and item['description']">
                     <span tal:content="structure python:item.get('description').replace('\n', '<br />')" />
                 </div>
             </li>
@@ -31,8 +31,8 @@
         var circular = $('.scrollable .items li').length > 1;
         $('.scrollable').scrollable({
             circular: circular,
-            speed: <tal:value replace="view/fade_time" />
-        }).autoscroll(<tal:value replace="view/halt_time" />);
+            speed: <tal:value replace="view/fadeTime" />
+        }).autoscroll(<tal:value replace="view/haltTime" />);
     });
     <tal:js tal:replace='structure string:&lt;/script&gt;' />
 

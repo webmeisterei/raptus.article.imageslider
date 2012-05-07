@@ -1,12 +1,14 @@
 from zope.interface.declarations import implements
 from raptus.article.core.interfaces import IComponent, IComponentSelection,\
     IArticle, IManageable
+from raptus.article.core.config import MANAGE_PERMISSION
 from zope.component import adapts
 from zope.interface.interface import Interface
 from plone.app.layout.viewlets.common import ViewletBase
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from raptus.article.images.interfaces import IImages
+from raptus.article.images.interfaces import IImages, IImage
 from zope.component import getMultiAdapter
+from Products.CMFPlone.utils import getToolByName
 try: # Plone 4 and higher
     from Products.ATContentTypes.interfaces.image import IATImage
 except: # BBB Plone 3
@@ -42,45 +44,49 @@ class ViewletTeaser(ViewletBase):
     """
     index = ViewPageTemplateFile('slider.pt')
     component = 'imageslider.teaser'
-    fade_time = 1500
-    halt_time = 6000
     css_class = 'sliderTeaser'
+
+    def update(self):
+        super(ViewletTeaser, self).update()
+        props = getToolByName(self.context, 'portal_properties').raptus_article
+        self.showCaption = props.getProperty('imageslider_teaser_caption', False)
+        self.showNav = props.getProperty('imageslider_teaser_navigation', False)
+        self.haltTime = props.getProperty('imageslider_teaser_halttime', 6000)
+        self.fadeTime = props.getProperty('imageslider_teaser_fadetime', 1500)
+        self.width = props.getProperty('images_imagesliderteaser_width', 500)
+        self.height = props.getProperty('imageslider_teaser_height', 200)
+
+
 
     @property
     def images(self):
         items = []
-        try:
-            provider = IImages(self.context)
-            images = provider.getImages(component=self.component)
-        except TypeError:
-            images = []
 
-        if not images:
-            pstate = getMultiAdapter(
-                (self.context, self.request), name='plone_portal_state')
+        mship = getToolByName(self.context, 'portal_membership')
+        canManage = mship.checkPermission(MANAGE_PERMISSION, self.context)
+        if canManage:
+            images = IImages(self.context).getImages()
+        else:
+            images = IImages(self.context).getImages(component=self.component)
 
-            try:
-                provider = IImages(pstate.portal()['fader-images'])
-                images = provider.getImages()
-            except (TypeError, KeyError):
-                images = []
 
         manageable = IManageable(self.context)
         images = manageable.getList(images, self.component)
 
-        for image in images:
-            obj = image['obj']
+        for item in images:
+            img = IImage(item['obj'])
+            obj = item['obj']
 
-            image.update({
+            item.update({
                 'class': '',
                 'caption': obj.Title(),
                 'description': obj.Description(),
-                'img_url': obj.absolute_url(),
+                'img_url': img.getImageURL('imagesliderteaser'),
             })
 
-            if 'show' in image and image['show']:
-                image['class'] += ' hidden'
+            if 'show' in item and item['show']:
+                item['class'] += ' hidden'
 
-            items.append(image)
+            items.append(item)
 
         return items
