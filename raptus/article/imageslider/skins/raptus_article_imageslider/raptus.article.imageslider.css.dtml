@@ -1,6 +1,7 @@
 /* <dtml-with base_properties> (do not remove this :) */
 /* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
 /* <dtml-call "REQUEST.set('teaser_width', portal_properties.raptus_article.images_imagesliderteaser_width)"> (not this either :) */
+/* <dtml-call "REQUEST.set('teaser_imageheight', portal_properties.raptus_article.images_imagesliderteaser_height)"> (not this either :) */
 /* <dtml-call "REQUEST.set('teaser_height', portal_properties.raptus_article.imageslider_teaser_height)"> (not this either :) */
 /* <dtml-call "REQUEST.set('teaser_crop_width', portal_properties.raptus_article.imageslider_teaser_cropwidth)"> (not this either :) */
 /* <dtml-call "REQUEST.set('teaser_crop_height', portal_properties.raptus_article.imageslider_teaser_cropheight)"> (not this either :) */
@@ -11,7 +12,7 @@
     position: relative;
     overflow: hidden;
     width: &dtml-teaser_width;px;
-    height:&dtml-teaser_height;px;
+    height:<dtml-var expr="teaser_crop_height or teaser_imageheight or teaser_height">px;
 }
 #content .scrollable ul.items {
     width: 20000em;
@@ -57,8 +58,6 @@
 .navi {
     width: &dtml-teaser_width;px;
     height: 20px;
-    position: absolute;
-    bottom: 0;
     text-align: center;
 }
 .navi a {

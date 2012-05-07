@@ -26,9 +26,8 @@
 
             </li>
         </ul>
-        <div class="navi" tal:condition="view/showNav"></div>
     </div>
-
+    <div class="navi" tal:condition="view/showNav"></div>
     <tal:js tal:replace='structure string:&lt;script type="text/javascript" &gt;' />
     $(function() {
         var circular = $('.scrollable .items li').length > 1;

@@ -36,17 +36,23 @@ imageslider_teaser_cropwidth/height
 
 imageslider_teaser_height
     maximum height of the slider
+    (only used in case images_imagesliderteaser_height and cropheight
+    are set to 0)
 
 imageslider_teaser_caption (True/False)
     show the description of images in the slider
 
 imageslider_teaser_navigation (True/False)
-    XXX not yet implemented
+    activates the `navigator plugin`__
+
+.. __:http://jquerytools.github.com/documentation/scrollable/navigator.html
+
 
 imageslider_teaser_fadetime
+    The time (in milliseconds) of the scrolling animation.
 
 imageslider_teaser_halttime
-
+    The time (in milliseconds) between autoscrolls.
 
 
 TODOS
