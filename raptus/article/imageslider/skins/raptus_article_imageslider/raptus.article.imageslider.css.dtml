@@ -63,7 +63,7 @@
 .navi a {
     width: 5px;
     height: 5px;
-    border: 1px solid #DDD !important;
+    border: 1px solid #75AD0A !important;
     float: left;
     display: block;
     margin: 3px;
@@ -71,6 +71,7 @@
 }
 .navi a.active {
     border-color: #205C90 !important;
+    background: #205C90;
 }
 
 
