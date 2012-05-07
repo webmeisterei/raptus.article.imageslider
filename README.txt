@@ -17,12 +17,44 @@ Components
 * Image Slider (Slider of images contained in the article) (XXX TODO)
 * Image Slider Teaser (Slider of images contained in the article displayed above the columns)
 
+Configuration
+-------------
+
+Configuration options can be found in portal_properties/raptus_article
+
+images_imagesliderteaser_width
+    maximum width of the image displayed in the slider
+    defaults to 5
+
+images_imagesliderteaser_height
+    maximum height of the image displayed in the slider
+    defaults to 0 (no limit)
+
+
+imageslider_teaser_cropwidth/height
+    use this to crop image to a certain width or height
+
+imageslider_teaser_height
+    maximum height of the slider
+
+imageslider_teaser_caption (True/False)
+    show the description of images in the slider
+
+imageslider_teaser_navigation (True/False)
+    XXX not yet implemented
+
+imageslider_teaser_fadetime
+
+imageslider_teaser_halttime
+
+
+
 TODOS
 -----
 
 XXX
 show navigation buttons
-locales directory
+localization
 images for components
 properties for configuration of the scrollable and use those in the stylesheet
 
@@ -35,7 +67,7 @@ Dependencies
 Installation
 ============
 
-Please refer to `raptus.article.gallery`_
+Please refer to `raptus.article.gallery`_ for installation instructions.
 
 .. _`raptus.article.gallery`: http://pypi.python.org/pypi/raptus.article.gallery
 

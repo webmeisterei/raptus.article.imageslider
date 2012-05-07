@@ -54,4 +54,25 @@
     display:block;
 }
 
+.navi {
+    width: &dtml-teaser_width;px;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+}
+.navi a {
+    width: 5px;
+    height: 5px;
+    border: 1px solid #DDD !important;
+    float: left;
+    display: block;
+    margin: 3px;
+    font-size: 1px;
+}
+.navi a.active {
+    border-color: #205C90 !important;
+}
+
+
 /* </dtml-with> */

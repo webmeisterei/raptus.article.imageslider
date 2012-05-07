@@ -6,6 +6,7 @@
      tal:condition="view/images"
      tal:omit-tag="">
 
+
     <div class="visualNoPrint scrollable"
          tal:define="anonymous context/@@plone_portal_state/anonymous">
 
@@ -22,8 +23,10 @@
                       tal:condition="python:view.showCaption and item['description']">
                     <span tal:content="structure python:item.get('description').replace('\n', '<br />')" />
                 </div>
+
             </li>
         </ul>
+        <div class="navi" tal:condition="view/showNav"></div>
     </div>
 
     <tal:js tal:replace='structure string:&lt;script type="text/javascript" &gt;' />
@@ -32,7 +35,7 @@
         $('.scrollable').scrollable({
             circular: circular,
             speed: <tal:value replace="view/fadeTime" />
-        }).autoscroll(<tal:value replace="view/haltTime" />);
+        }).autoscroll(<tal:value replace="view/haltTime" />).navigator();
     });
     <tal:js tal:replace='structure string:&lt;/script&gt;' />
 
