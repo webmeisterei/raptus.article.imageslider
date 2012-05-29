@@ -6,6 +6,9 @@ Show contained images in a `jQueryTOOLS scrollable`__ carousel.
 
 .. __: http://jquerytools.org/demos/scrollable/index.html
 
+
+.. image:: http://svn.plone.org/svn/collective/raptus.article/raptus.article.imageslider/trunk/docs/screen.png
+
 The reason for this being not integrated in `raptus.article.slider` is that
 the latter depends on `raptus.article.nesting`.
 
@@ -45,7 +48,7 @@ imageslider_teaser_caption (True/False)
 imageslider_teaser_navigation (True/False)
     activates the `navigator plugin`__
 
-.. __:http://jquerytools.github.com/documentation/scrollable/navigator.html
+    .. __: http://jquerytools.github.com/documentation/scrollable/navigator.html
 
 
 imageslider_teaser_fadetime
