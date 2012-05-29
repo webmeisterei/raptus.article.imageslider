@@ -58,12 +58,9 @@ imageslider_teaser_halttime
 TODOS
 -----
 
-XXX
-show navigation buttons
-localization
-images for components
-properties for configuration of the scrollable and use those in the stylesheet
+* localization
 
+* * images for components
 
 Dependencies
 ------------
