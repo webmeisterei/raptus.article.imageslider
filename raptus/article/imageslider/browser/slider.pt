@@ -30,7 +30,7 @@
         $('.scrollable').scrollable({
             circular: circular,
             speed: <tal:value replace="view/fadeTime" />
-        }).autoscroll({intervall: <tal:value replace="view/haltTime" />, autopause: false}).navigator();
+        }).autoscroll({interval: <tal:value replace="view/haltTime" />, autopause: false}).navigator();
     });
     <tal:js tal:replace='structure string:&lt;/script&gt;' />
 
