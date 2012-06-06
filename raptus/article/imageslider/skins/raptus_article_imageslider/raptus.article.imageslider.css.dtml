@@ -20,6 +20,7 @@
     clear: both;
     list-style-type: none;
     margin-left: 0;
+    left: 0;
 }
 .scrollable .items li {
     position: relative;

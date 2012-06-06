@@ -1,6 +1,14 @@
 Changelog
 =========
 
+after 0.1.1
+-----------
+
+- only show navigation if there are more than 1 images
+
+- bugfix: images overlapped due to bug in circular implementation.
+  wrapping initialization with a timeout fixes the problem
+
 0.1.1 (2012-05-30)
 ------------------
 

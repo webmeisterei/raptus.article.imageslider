@@ -26,11 +26,19 @@
     <div class="navi" tal:condition="view/showNav"></div>
     <tal:js tal:replace='structure string:&lt;script type="text/javascript" &gt;' />
     $(function() {
-        var circular = $('.scrollable .items li').length > 1;
-        $('.scrollable').scrollable({
-            circular: circular,
-            speed: <tal:value replace="view/fadeTime" />
-        }).autoscroll({interval: <tal:value replace="view/haltTime" />, autopause: false}).navigator();
+        setTimeout(function(){
+            // circular:true leads to overlapping images when not wrapped by the timeout
+
+            var circular = $('.scrollable .items li').length > 1;
+            var api = $('.scrollable').scrollable({
+                circular: circular,
+                speed: <tal:value replace="view/fadeTime" />
+            });
+
+            if (circular == true) {
+                api.autoscroll({interval: <tal:value replace="view/haltTime" />, autopause: false}).navigator();
+            }
+        }, 1);
     });
     <tal:js tal:replace='structure string:&lt;/script&gt;' />
 
