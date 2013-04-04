@@ -38,9 +38,7 @@
 .scrollable .items li .caption span {
     display: block;
     padding: 0.5em;
-    font-size: 1em;
     text-align: right;
-    font-family: 'Open Sans', sans-serif;
     color: #fff;
 }
 
