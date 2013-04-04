@@ -55,13 +55,13 @@ class ViewletTeaser(ViewletBase):
         self.fadeTime = props.getProperty('imageslider_teaser_fadetime', 1500)
         self.width = props.getProperty('images_imagesliderteaser_width', 500)
         self.height = props.getProperty('imageslider_teaser_height', 200)
+        self.linkRelatedItems = props.getProperty('imageslider_teaser_link_related', False)
+        self.images = self._images()
+        
 
 
-
-    @property
-    def images(self):
+    def _images(self):
         items = []
-
         mship = getToolByName(self.context, 'portal_membership')
         canManage = mship.checkPermission(MANAGE_PERMISSION, self.context)
         if canManage:
@@ -76,12 +76,15 @@ class ViewletTeaser(ViewletBase):
         for item in images:
             img = IImage(item['obj'])
             obj = item['obj']
-
+            
+            
             item.update({
                 'class': '',
                 'caption': obj.Title(),
                 'description': obj.Description(),
                 'img_url': img.getImageURL('imagesliderteaser'),
+                'image_object': obj,
+                'link':  obj.getRelatedItems() and obj.getRelatedItems()[0].absolute_url() or None,
             })
 
             if 'show' in item and item['show']:

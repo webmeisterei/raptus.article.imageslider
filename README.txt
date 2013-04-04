@@ -50,7 +50,10 @@ imageslider_teaser_navigation (True/False)
 
     .. __: http://jquerytools.github.com/documentation/scrollable/navigator.html
 
-
+imageslider_teaser_link_related (True/False)
+	if set to True and an image has related items, it will link to the first
+	related item
+	
 imageslider_teaser_fadetime
     The time (in milliseconds) of the scrolling animation.
 

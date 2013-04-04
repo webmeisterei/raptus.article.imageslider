@@ -10,16 +10,19 @@
             <li tal:repeat="item view/images"
                 tal:attributes="class string:${item/class}">
                 <metal:manage use-macro="context/raptus_article_macros/macros/manage" />
-
+                
+                <a tal:omit-tag="python: not view.linkRelatedItems or item['link'] is None"
+                   href="#"
+                   tal:attributes="href item/link">                
                 <span class="img"><img tal:attributes="src item/img_url;
                                            alt item/caption;
                                            width view/width;" /></span>
-
-                <div class="caption"
+                
+                <span class="caption"
                       tal:condition="python:view.showCaption and item['description']">
                     <span tal:content="structure python:item.get('description').replace('\n', '<br />')" />
-                </div>
-
+                </span>
+                </a>
             </li>
         </ul>
     </div>
