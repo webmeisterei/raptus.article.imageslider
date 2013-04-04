@@ -33,14 +33,13 @@
     bottom: 0;
     width: 100%;
     z-index: 1000;
-    background: #000;
-    opacity: 0.25;
-    /*XXX extra div for background and opacity */
+    background-color: rgba(40, 40, 40, 0.7);
 }
 .scrollable .items li .caption span {
     display: block;
-    padding: 0.5em 0.5em 0.5em 110px;
+    padding: 0.5em;
     font-size: 1em;
+    text-align: right;
     font-family: 'Open Sans', sans-serif;
     color: #fff;
 }
