@@ -6,9 +6,9 @@ version = '0.2'
 setup(name='raptus.article.imageslider',
       version=version,
       description="Provides components for showing images in jquerytools scrollable carousels.",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "MANUAL.txt")).read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+                       open(os.path.join("docs", "HISTORY.rst")).read(),
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Programming Language :: Python",
@@ -19,7 +19,7 @@ setup(name='raptus.article.imageslider',
       keywords='',
       author='Harald Friessnegger',
       author_email='harald (at) webmeisterei dot com',
-      url='https://svn.plone.org/svn/collective/raptus.article/raptus.article.imageslider/',
+      url='https://github.com/webmeisterei/raptus.article.imageslider',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['raptus', 'raptus.article'],
