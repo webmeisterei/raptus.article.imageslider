@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1.1'
+version = '0.2'
 
 setup(name='raptus.article.imageslider',
       version=version,
@@ -12,7 +12,9 @@ setup(name='raptus.article.imageslider',
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Programming Language :: Python",
-        "Topic :: Software Development :: Libraries :: Python Modules",
+        'Framework :: Plone', 
+        'Framework :: Plone :: 4.1',
+        'Framework :: Plone :: 4.2', 
         ],
       keywords='',
       author='Harald Friessnegger',
