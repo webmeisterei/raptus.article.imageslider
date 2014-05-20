@@ -33,5 +33,7 @@ setup(name='raptus.article.imageslider',
       ],
       entry_points="""
       # -*- Entry points: -*-
+      [z3c.autoinclude.plugin]
+      target = plone
       """,
       )

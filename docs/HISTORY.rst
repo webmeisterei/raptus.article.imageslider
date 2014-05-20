@@ -1,12 +1,17 @@
 Changelog
 =========
 
+dev
+---
+
+- Add z3c.autoinclude entry point for plone
+
 0.2 (2013-05-08)
 ----------------
 
 - slider items can link to other portal content using related items
   (see ``imageslider_teaser_link_related`` in the README)
-  
+
 - pass image object to page-template too, so customized versions can use
   plone.app.imaging scales if the want to.
 
@@ -17,7 +22,7 @@ Changelog
 
 - nicer layout for image captions using rgb() css transparency instead
   of opacity (similar to newsitem_view)
-  
+
 
 0.1.1 (2012-05-30)
 ------------------
