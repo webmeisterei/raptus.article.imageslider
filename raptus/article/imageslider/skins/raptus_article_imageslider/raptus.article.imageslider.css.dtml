@@ -8,25 +8,45 @@
 
 
 
+/* this is needed to make the slider work */
+
 .scrollable {
     position: relative;
     overflow: hidden;
-    width: &dtml-teaser_width;px;
-    height:<dtml-var expr="teaser_crop_height or teaser_imageheight or teaser_height">px;
 }
-#content .scrollable ul.items {
+
+.scrollable ul.items {
     width: 20000em;
     position: absolute;
     clear: both;
-    list-style-type: none;
-    margin-left: 0;
-    left: 0;
 }
+
 .scrollable .items li {
     position: relative;
     display: block;
     float: left;
 }
+
+.scrollable .items li img {
+  max-width: 100%;
+}
+
+/* plone specific styling */
+
+
+.imageSliderTeaser {
+  max-width: 100%;
+  width: &dtml-teaser_width;px;
+}
+
+
+#content .scrollable ul.items {
+    list-style-type: none;
+    margin-left: 0;
+    left: 0;
+}
+
+
 .scrollable .items li .caption {
     display: block;
     position: absolute;
@@ -41,6 +61,10 @@
     text-align: right;
     color: #fff;
 }
+.scrollable .items li .caption span.title {
+    font-weight: bold;
+}
+
 
 .scrollable .items li span.img {
     <dtml-if expr="teaser_crop_width > 0">
@@ -54,7 +78,6 @@
 }
 
 .navi {
-    width: &dtml-teaser_width;px;
     height: 20px;
     text-align: center;
 }

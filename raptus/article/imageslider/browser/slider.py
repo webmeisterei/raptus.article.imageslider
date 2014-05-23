@@ -1,5 +1,5 @@
 from zope.interface.declarations import implements
-from raptus.article.core.interfaces import IComponent, IComponentSelection,\
+from raptus.article.core.interfaces import IComponent, IComponentSelection, \
     IArticle, IManageable
 from raptus.article.core.config import MANAGE_PERMISSION
 from zope.component import adapts
@@ -50,11 +50,13 @@ class ViewletTeaser(ViewletBase):
         super(ViewletTeaser, self).update()
         props = getToolByName(self.context, 'portal_properties').raptus_article
         self.showCaption = props.getProperty('imageslider_teaser_caption', False)
+        self.showTitle = props.getProperty('imageslider_teaser_title', False)
         self.showNav = props.getProperty('imageslider_teaser_navigation', False)
         self.haltTime = props.getProperty('imageslider_teaser_halttime', 6000)
         self.fadeTime = props.getProperty('imageslider_teaser_fadetime', 1500)
         self.width = props.getProperty('images_imagesliderteaser_width', 500)
         self.height = props.getProperty('imageslider_teaser_height', 200)
+        self.scale = props.getProperty('images_imagesliderteaser_scale', None)
         self.linkRelatedItems = props.getProperty('imageslider_teaser_link_related', False)
         self.images = self._images()
         
@@ -72,17 +74,22 @@ class ViewletTeaser(ViewletBase):
 
         manageable = IManageable(self.context)
         images = manageable.getList(images, self.component)
-
+        
         for item in images:
             img = IImage(item['obj'])
             obj = item['obj']
             
-            
+            if self.scale:
+                scaling = getMultiAdapter((obj, self.request), name='images')
+                url = scaling.scale('image', self.scale).url
+            else:
+                url = img.getImageURL('imagesliderteaser')
+                
             item.update({
                 'class': '',
                 'caption': obj.Title(),
                 'description': obj.Description(),
-                'img_url': img.getImageURL('imagesliderteaser'),
+                'img_url': url,
                 'image_object': obj,
                 'link':  obj.getRelatedItems() and obj.getRelatedItems()[0].absolute_url() or None,
             })

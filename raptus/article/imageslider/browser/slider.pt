@@ -15,12 +15,14 @@
                    href="#"
                    tal:attributes="href item/link">                
                 <span class="img"><img tal:attributes="src item/img_url;
-                                           alt item/caption;
-                                           width view/width;" /></span>
+                                           alt item/caption;" /></span>
                 
                 <span class="caption"
-                      tal:condition="python:view.showCaption and item['description']">
-                    <span tal:content="structure python:item.get('description').replace('\n', '<br />')" />
+                      tal:define="description python:view.showCaption and item['description'];
+                                  title python:view.showTitle and item['caption']"
+                      tal:condition="python: description or title">
+                    <span class="title" tal:condition="title" tal:content="item/caption" />                      
+                    <span class="description" tal:condition="description" tal:content="structure python:item.get('description').replace('\n', '<br />')" />
                 </span>
                 </a>
             </li>
@@ -28,20 +30,13 @@
     </div>
     <div class="navi" tal:condition="view/showNav"></div>
     <tal:js tal:replace='structure string:&lt;script type="text/javascript" &gt;' />
-    $(function() {
-        setTimeout(function(){
-            // circular:true leads to overlapping images when not wrapped by the timeout
-
-            var circular = $('.scrollable .items li').length > 1;
-            var api = $('.scrollable').scrollable({
-                circular: circular,
-                speed: <tal:value replace="view/fadeTime" />
-            });
-
-            if (circular == true) {
-                api.autoscroll({interval: <tal:value replace="view/haltTime" />, autopause: false}).navigator();
-            }
-        }, 1);
+    $(function() {       
+       api = raptus.imageslider.initScrollable($('.imageSliderTeaser'),
+                                               autoscroll={
+                                                   interval: <tal:value replace="view/haltTime" />,
+                                                   autopause: false
+                                               });
+       api.getConf()['speed'] = <tal:value replace="view/fadeTime" />;
     });
     <tal:js tal:replace='structure string:&lt;/script&gt;' />
 
