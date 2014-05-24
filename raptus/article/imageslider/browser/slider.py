@@ -93,6 +93,11 @@ class ViewletTeaser(ViewletBase):
                 'image_object': obj,
                 'link':  obj.getRelatedItems() and obj.getRelatedItems()[0].absolute_url() or None,
             })
+            
+            if self.scale:
+                item.update({
+                    'crop': '%s/@@croppingeditor?scalename=%s' % (obj.absolute_url(), self.scale) 
+                })
 
             if 'show' in item and item['show']:
                 item['class'] += ' hidden'
