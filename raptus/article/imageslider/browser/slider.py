@@ -86,7 +86,7 @@ class ViewletTeaser(ViewletBase):
                 url = img.getImageURL('imagesliderteaser')
                 
             item.update({
-                'class': '',
+                'class': 'item',
                 'caption': obj.Title(),
                 'description': obj.Description(),
                 'img_url': url,
