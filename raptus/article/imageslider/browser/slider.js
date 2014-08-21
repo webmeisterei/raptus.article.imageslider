@@ -100,10 +100,10 @@ var raptus = raptus || {};
             // add navigator (useless in case template has no div.navi)
             scrollable.navigator();
 
-            if (autoscroll && (api.data('scrollable').getSize()>1) ) {
+            if (autoscroll && (api.getSize()>1) ) {
                 log("more than one item and autoscrolling activated");
-                api.data('scrollable').getConf()['circular'] = true;
-                api.autoscroll(autoscroll);
+                api.getConf()['circular'] = true;
+                scrollable.autoscroll(autoscroll);
             }
 
 
