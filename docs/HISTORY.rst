@@ -6,7 +6,10 @@ dev
 
 .. ATTENTION: currently no upgrade profile for the new properties and javascript
    reinstall needed (which might overwrite your settings for existing properties)
-   
+
+- It is possible to move to a specific slide using a hash in the url.
+  (eg. plone/article#slide-5)
+
 - Add z3c.autoinclude entry point for plone
 
 - Show image title in caption text too
