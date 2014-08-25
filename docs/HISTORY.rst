@@ -1,8 +1,8 @@
 Changelog
 =========
 
-dev
----
+0.3 (2014-08-25)
+----------------
 
 .. ATTENTION: currently no upgrade profile for the new properties and javascript
    reinstall needed (which might overwrite your settings for existing properties)
